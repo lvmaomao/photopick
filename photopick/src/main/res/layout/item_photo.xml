@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qingsongchou.library.photopick.widget.SquareItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:padding="1dip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_photo_black_48dp" />
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dip"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:padding="5dip"
+        android:src="@drawable/photo_checkbox_bg" />
+
+</com.qingsongchou.library.photopick.widget.SquareItemLayout>
