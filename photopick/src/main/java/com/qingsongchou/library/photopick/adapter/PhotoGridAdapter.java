@@ -85,23 +85,23 @@ public class PhotoGridAdapter extends RecyclerView.Adapter {
     }
 
     public void update(List<Photo> data) {
-        if(data == null) {
+        if (data == null) {
             return;
         }
-        if(this.photos.isEmpty()) {
-            if(data.isEmpty()) {
+        if (this.photos.isEmpty()) {
+            if (data.isEmpty()) {
                 return;
             }
             this.photos.addAll(data);
             notifyItemRangeInserted(getOffset(), data.size());
         } else {
-            if(data.isEmpty()) {
+            if (data.isEmpty()) {
                 int size = this.photos.size();
                 this.photos.clear();
                 notifyItemRangeRemoved(getOffset(), size);
             } else {
-                for(Photo photo : data) {
-                    if(this.photos.contains(photo)) {
+                for (Photo photo : data) {
+                    if (this.photos.contains(photo)) {
                         continue;
                     }
                     //add camera photo
@@ -129,6 +129,12 @@ public class PhotoGridAdapter extends RecyclerView.Adapter {
         if (holder instanceof VHPhoto) {
             VHPhoto vhPhoto = (VHPhoto) holder;
             Photo photo = getPhoto(position);
+            if (photo != null) {
+                String uri = "file://" + photo.getPath();
+                ImageLoader.getInstance().displayImage(uri, vhPhoto.ivPhoto);
+                vhPhoto.ivPhoto.setTag(uri);
+                vhPhoto.ivSelected.setSelected(photo.isChecked());
+            }
 //            Picasso.with(context)
 //                    .load(new File(photo.getPath()))
 //                    .placeholder(R.drawable.ic_photo_black_48dp)
@@ -136,14 +142,13 @@ public class PhotoGridAdapter extends RecyclerView.Adapter {
 //                    .resize(220, 220)
 //                    .centerCrop()
 //                    .into(vhPhoto.ivPhoto);
-            String uri = "file://" + photo.getPath();
-            ImageLoader.getInstance().displayImage(uri, vhPhoto.ivPhoto);
-            vhPhoto.ivPhoto.setTag(uri);
-            vhPhoto.ivSelected.setSelected(photo.isChecked());
         }
     }
 
     private Photo getPhoto(int position) {
+        if (position > photos.size() + 1) {
+            return null;
+        }
         return photos.get(displayCamera ? position - 1 : position);
     }
 
