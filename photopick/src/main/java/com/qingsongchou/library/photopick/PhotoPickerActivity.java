@@ -135,7 +135,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.container, this.imagePagerFragment)
                 .addToBackStack(null)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
 
@@ -151,7 +151,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             setResult(RESULT_CANCELED);
-            super.onBackPressed();
+            this.finish();
             return true;
         }
 
