@@ -15,7 +15,7 @@ public final class ValidUtil {
     /**
      * 图片大小限制
      */
-    private static final int MAX_IMG_SIZE = 100 * 1024 * 1024;
+    private static final int MAX_IMG_SIZE = 10 * 1024 * 1024;
 
     public static boolean valid(String path) {
         if (TextUtils.isEmpty(path)) {
