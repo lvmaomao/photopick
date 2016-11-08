@@ -245,8 +245,10 @@ public class PhotoGridAdapter extends RecyclerView.Adapter {
                     } else {
                         if (lastPosition != -1) {
                             Photo oldPhoto = getPhoto(lastPosition);
-                            oldPhoto.setChecked(false);
-                            notifyItemChanged(lastPosition);
+                            if (oldPhoto != null) {
+                                oldPhoto.setChecked(false);
+                                notifyItemChanged(lastPosition);
+                            }
                         }
                         newPhoto.setChecked(true);
                         notifyItemChanged(newPosition);
