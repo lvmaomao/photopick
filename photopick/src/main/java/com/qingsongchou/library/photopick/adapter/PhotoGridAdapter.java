@@ -149,7 +149,11 @@ public class PhotoGridAdapter extends RecyclerView.Adapter {
         if (position > photos.size() + 1) {
             return null;
         }
-        return photos.get(displayCamera ? position - 1 : position);
+        int realPosition = displayCamera ? position - 1 : position;
+        if (realPosition >= photos.size()) {
+            return null;
+        }
+        return photos.get(realPosition);
     }
 
     private int getOffset() {
